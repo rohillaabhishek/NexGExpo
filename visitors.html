@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGExpo | Minimal Structure</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-padding-top: 80px; /* Offset for fixed header */
+        }
+        /* Custom scroll behavior for smooth transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Styling for the embedded Google Form */
+        .google-form-embed {
+            width: 100%;
+            height: 1000px; /* Set a fixed height for the form */
+            border: none;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 antialiased flex flex-col">
+
+    <!-- NAV - Fixed Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg backdrop-blur-sm bg-opacity-95 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-teal-400 flex items-center justify-center text-white font-bold shadow-md">NGE</div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">NexGExpo</h1>
+                    <p class="text-xs text-gray-500 hidden sm:block">Where exhibitions never end</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex items-center gap-4">
+                <a href="index.html" class="text-sm font-semibold px-4 py-2 bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-700 transition duration-150 transform hover:scale-105">
+                    Home
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA (Google Form) -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <!-- Container for the Embedded Form -->
+        <div class="bg-white rounded-xl shadow-xl border border-gray-200 p-4 sm:p-6 lg:p-8">
+            <h2 class="text-3xl font-bold text-center text-indigo-700 mb-2">NexGExpo Visitors Survey</h2>
+            <p class="text-center mb-6">Your thoughts are the building blocks for this idea. Help us create something truly valuable.  </p>
+            
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdAlLA2cKAfSEpg4owVsSeLPEr_xzwlalrZi80aRtcO8zhuiw/viewform?usp=header?embedded=true" 
+                class="google-form-embed" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                loading="lazy"
+            >
+                Loading Google Form...
+            </iframe>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-center md:text-left">
+                <strong class="text-gray-900 text-lg">NexGExpo</strong>
+                <p class="text-sm text-gray-500 mt-1">Making exhibitions last beyond the show floor.</p>
+            </div>
+            <div class="text-sm text-gray-500">© <span id="current-year"></span> NexGExpo. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Vanilla JavaScript for setting the year -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in the footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

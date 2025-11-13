@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGExpo | Experience Exhibitions Beyond Boundaries</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-padding-top: 80px; /* Offset for fixed header */
+        }
+        /* Custom scroll behavior for smooth transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 antialiased">
+
+    <!-- NAV - Fixed Header for better UX -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg backdrop-blur-sm bg-opacity-95 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-3">
+                <!-- LogoIcon Component equivalent -->
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-teal-400 flex items-center justify-center text-white font-bold shadow-md">NGE</div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">NexGExpo</h1>
+                    <p class="text-xs text-gray-500 hidden sm:block">Where exhibitions never end</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex items-center gap-4">
+                <a href="#about" class="text-sm font-medium hover:text-indigo-600 transition duration-150 hidden md:block">About</a>
+                <a href="#how" class="text-sm font-medium hover:text-indigo-600 transition duration-150 hidden md:block">How it works</a>
+                <a href="#survey" class="text-sm font-semibold px-4 py-2 bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-700 transition duration-150 transform hover:scale-105">
+                    Take the Survey
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-16 pb-12">
+        <!-- HERO SECTION -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Hero Content -->
+            <div>
+                <span class="inline-block px-3 py-1 text-sm font-semibold bg-teal-100 text-teal-800 rounded-full mb-3">Post-Event Value</span>
+                <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
+                    Experience exhibitions <span class="text-indigo-600">beyond boundaries</span>
+                </h2>
+                <p class="mt-5 text-xl text-gray-600">
+                    A simple idea: keep exhibitions alive online after the show ends. Explore 3D booths, watch demos, download brochures, and connect with companies from anywhere in the world, 365 days a year.
+                </p>
+
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <a href="#survey" class="inline-flex items-center justify-center px-8 py-3 bg-indigo-600 text-white rounded-xl font-semibold shadow-xl shadow-indigo-200 hover:bg-indigo-700 transition duration-200 transform hover:-translate-y-0.5">
+                        Start Exploring
+                    </a>
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition duration-200">
+                        Request a Demo
+                        <!-- Zap Icon (Lightning) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 w-5 h-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </a>
+                </div>
+
+                <!-- Feature Grid -->
+                <ul class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <li class="bg-white p-5 rounded-xl shadow-md border border-indigo-100">
+                        <!-- Globe Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-indigo-500 mb-2"><circle cx="12" cy="12" r="10"/><path d="M12 2a20 20 0 0 0 0 20m0-20a20 20 0 0 1 0 20M2 12h20"/></svg>
+                        <strong class="font-semibold text-gray-800">Global Access</strong>
+                        <p class="text-sm text-gray-500 mt-1">Visit exhibitions from any country, anytime.</p>
+                    </li>
+                    <li class="bg-white p-5 rounded-xl shadow-md border border-indigo-100">
+                        <!-- Zap Icon (Lightning) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-teal-500 mb-2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <strong class="font-semibold text-gray-800">3D Booths & Video</strong>
+                        <p class="text-sm text-gray-500 mt-1">Interactive tours and rich media for every exhibitor.</p>
+                    </li>
+                    <li class="bg-white p-5 rounded-xl shadow-md border border-indigo-100">
+                        <!-- Users Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-pink-500 mb-2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <strong class="font-semibold text-gray-800">Lasting Connections</strong>
+                        <p class="text-sm text-gray-500 mt-1">Capture leads and continue conversations after the show.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Hero Video / MP4 Embed -->
+            <div class="w-full relative">
+                <!-- Inner container: pt-[56.25%] maintains 16:9 aspect ratio on mobile. lg:pt-0 lg:h-full forces the height to match the adjacent grid column on desktop. -->
+                <div class="relative pt-[56.25%] lg:pt-0 lg:h-full">
+                    <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        poster="https://placehold.co/900x560/5C6BC0/FFFFFF?text=Digital+Exhibition+Preview"
+                        class="absolute top-0 left-0 w-full h-full object-cover rounded-2xl shadow-2xl transition duration-500 hover:shadow-indigo-400/50"
+                    >
+                        <!-- Source path: Assumes the video file is in the same directory as index.html -->
+                        <source src="nexgexpovideo.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT / PROBLEM + SOLUTION -->
+        <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-200">
+                <h3 class="text-3xl font-bold text-gray-900">Why this matters</h3>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Problem -->
+                    <div class="p-6 bg-red-50/50 border border-red-100 rounded-xl">
+                        <h4 class="font-bold text-xl text-red-700 mb-3 flex items-center">
+                            <!-- Briefcase Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                            The Current Problem
+                        </h4>
+                        <ul class="mt-3 space-y-2 text-gray-700">
+                            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Exhibitions run for just 3–4 days and then the value fades.</li>
+                            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Many potential buyers and partners can’t attend in person.</li>
+                            <li class="flex items-start"><span class="text-red-500 mr-2">•</span> Exhibitors lose momentum, leads, and visibility after the event ends.</li>
+                        </ul>
+                    </div>
+                    <!-- Solution -->
+                    <div class="p-6 bg-green-50/50 border border-green-100 rounded-xl">
+                        <h4 class="font-bold text-xl text-green-700 mb-3 flex items-center">
+                            <!-- Zap Icon (Lightning) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            The NexGExpo Solution
+                        </h4>
+                        <ul class="mt-3 space-y-2 text-gray-700">
+                            <li class="flex items-start"><span class="text-green-500 mr-2">•</span> Persistent online twin with floorplan and detailed booth pages.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2">•</span> 3D tours, videos, brochures, and contact tools for year-round engagement.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2">•</span> Analytics, lead capture, and networking tools for continuous ROI.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO BENEFITS -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+            <h3 class="text-3xl font-bold text-center mb-10">Maximize Value for Everyone</h3>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                    <h4 class="font-bold text-2xl text-gray-900 mb-2">Organizers</h4>
+                    <p class="mt-2 text-gray-600">Extend event life, unlock new digital revenue streams, and expand your global reach. You maintain full control over branding and access policies.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-teal-500">
+                    <h4 class="font-bold text-2xl text-gray-900 mb-2">Exhibitors</h4>
+                    <p class="mt-2 text-gray-600">Prolong your return on investment (ROI), capture high-quality leads passively, and get discovered by international buyers long after the physical doors close.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-pink-500">
+                    <h4 class="font-bold text-2xl text-gray-900 mb-2">Visitors</h4>
+                    <p class="mt-2 text-gray-600">Explore shows you missed, revisit key booths for forgotten information, and connect with companies on your own schedule without travel constraints.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <h3 class="text-3xl font-bold text-center mb-10">How it works — simple, seamless integration</h3>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center border">
+                    <div class="text-5xl font-extrabold text-indigo-600 bg-indigo-50 w-16 h-16 rounded-full inline-flex items-center justify-center mx-auto mb-4 border-2 border-indigo-200">1</div>
+                    <p class="mt-3 font-semibold text-lg text-gray-900">Organizers upload floorplan</p>
+                    <p class="text-sm text-gray-500 mt-2">The physical exhibition is quickly digitized and mapped to a simple floorplan interface.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center border">
+                    <div class="text-5xl font-extrabold text-teal-600 bg-teal-50 w-16 h-16 rounded-full inline-flex items-center justify-center mx-auto mb-4 border-2 border-teal-200">2</div>
+                    <p class="mt-3 font-semibold text-lg text-gray-900">Exhibitors add rich content</p>
+                    <p class="text-sm text-gray-500 mt-2">Upload 3D models, videos, detailed brochures, and configure contact details easily.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center border">
+                    <div class="text-5xl font-extrabold text-pink-600 bg-pink-50 w-16 h-16 rounded-full inline-flex items-center justify-center mx-auto mb-4 border-2 border-pink-200">3</div>
+                    <p class="mt-3 font-semibold text-lg text-gray-900">Visitors explore & connect</p>
+                    <p class="text-sm text-gray-500 mt-2">Global audience discovers, downloads resources, and connects with exhibitors 24/7.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SURVEY SECTION -->
+        <section id="survey" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <div class="bg-indigo-700 text-white rounded-3xl p-8 md:p-12 shadow-2xl">
+                <h3 class="text-3xl font-bold">Help shape NexGExpo</h3>
+                <p class="mt-4 text-indigo-100 text-lg">We are collecting essential feedback from organizers, exhibitors, and visitors. Your answers will directly influence how the platform is built. It only takes 5–7 minutes.</p>
+
+                <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <a href="organizers.html"  rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Organizer Survey</a>
+                    <a href="exhibitors.html"  rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Exhibitor Survey</a>
+                    <a href="visitors.html"  rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Visitor Survey</a>
+                </div>
+
+                <p class="mt-6 text-indigo-100 text-sm text-center sm:text-left">Prefer a direct conversation? <a href="#contact" class="underline font-medium hover:text-white transition duration-200">Contact us</a> for a quick call or personalized demo.</p>
+            </div>
+        </section>
+
+        <!-- PARTNERSHIPS -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-200">
+                <h3 class="text-3xl font-bold">Partnerships & pilot program</h3>
+                <p class="mt-4 text-gray-600 text-lg">We’re actively seeking organizers, event technology platforms, 3D capture providers, and industry groups to pilot this platform with us. Partner pilots receive preferential rates and comprehensive co-marketing support.</p>
+
+                <div class="mt-6">
+                    <a href="#contact" class="inline-block px-6 py-3 bg-teal-600 text-white rounded-xl font-semibold shadow-lg hover:bg-teal-700 transition duration-200">
+                        Become a Pilot Partner
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-200">
+                <h3 class="text-3xl font-bold">Contact & early access</h3>
+                <p class="mt-4 text-gray-600 text-lg">Join our early access list or send us a detailed message. We’ll respond quickly and share exclusive pilot information.</p>
+
+                <!-- FORM UPDATED FOR WEB3FORMS -->
+                <form id="contact-form" class="mt-8 grid grid-cols-1 gap-5" method="POST" action="https://api.web3forms.com/submit">
+                    <!-- REQUIRED: Web3Forms Access Key (REPLACE THIS WITH YOUR KEY!) -->
+                    <input type="hidden" name="access_key" value="9a3b64be-4da1-4e08-b91c-bed47e2fc837">
+                    <!-- Custom Subject Line (Optional) -->
+                    <input type="hidden" name="subject" value="New Contact Inquiry from NexGExpo Landing Page">
+
+                    <input
+                        type="text"
+                        placeholder="Your name"
+                        name="Name"
+                        required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email address"
+                        name="Email"
+                        required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                    />
+                    <select
+                        name="Role"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white appearance-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                    >
+                        <option>I'm an organizer</option>
+                        <option>I'm an exhibitor</option>
+                        <option>I'm a visitor/attendee</option>
+                        <option>Other / Partner</option>
+                    </select>
+                    <textarea
+                        placeholder="Your message (optional)"
+                        name="Message"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 h-32 resize-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                    ></textarea>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mt-2">
+                        <button
+                            type="submit"
+                            id="submit-btn"
+                            class="w-full sm:w-auto px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+                        >
+                            Send Message
+                        </button>
+                        <!-- <button
+                            type="button"
+                            class="w-full sm:w-auto px-6 py-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition duration-200"
+                        >
+                            Request Demo
+                        </button> -->
+                    </div>
+
+                    <!-- Form Status Messages -->
+                    <div id="form-status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-center md:text-left">
+                <strong class="text-gray-900 text-lg">NexGExpo</strong>
+                <p class="text-sm text-gray-500 mt-1">Making exhibitions last beyond the show floor.</p>
+            </div>
+            <div class="text-sm text-gray-500">© <span id="current-year"></span> NexGExpo. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Vanilla JavaScript for interactivity (Form Handling) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in the footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            setupFormSubmission();
+            setupSmoothScrolling();
+        });
+
+        // Function to display status messages (success/error)
+        function showStatusMessage(status, message = '') {
+            const formStatus = document.getElementById('form-status');
+            let htmlContent = '';
+            
+            if (status === 'success') {
+                htmlContent = `
+                    <p class="mt-4 p-3 bg-green-100 text-green-700 border border-green-300 rounded-lg flex items-center">
+                        <!-- Mail Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Thank you! Your message has been sent successfully. We'll be in touch soon.
+                    </p>`;
+            } else if (status === 'error') {
+                htmlContent = `
+                    <p class="mt-4 p-3 bg-red-100 text-red-700 border border-red-300 rounded-lg flex items-center">
+                        <!-- Alert Triangle Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><path d="M10.29 3.86L2.4 17.65C1.73 18.81 2.65 20 4 20h16c1.35 0 2.27-1.19 1.6-2.35L13.71 3.86c-.66-1.16-2.36-1.16-3.02 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Submission failed: ${message}
+                    </p>`;
+            } else {
+                htmlContent = '';
+            }
+            
+            formStatus.innerHTML = htmlContent;
+        }
+
+        async function setupFormSubmission() {
+            const form = document.getElementById('contact-form');
+            const submitButton = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Input validation check
+                if (!form.checkValidity()) {
+                    // If form is invalid, let the browser show its error messages.
+                    return; 
+                }
+
+                // Set submitting state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+                showStatusMessage(null); // Clear previous status
+
+                const formData = new FormData(form);
+
+                try {
+                    // Send data to Web3Forms endpoint
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData
+                    });
+
+                    // Web3Forms always returns JSON
+                    const result = await response.json(); 
+
+                    if (result.success) {
+                        showStatusMessage('success');
+                        form.reset();
+                    } else {
+                        // Handle server-side errors (e.g., missing access key)
+                        console.error('Web3Forms Error:', result);
+                        showStatusMessage('error', result.message || 'Please check the console for details.');
+                    }
+
+                } catch (error) {
+                    console.error('Submission Network Error:', error);
+                    showStatusMessage('error', 'Network error or unable to reach the server.');
+                } finally {
+                    // Reset state
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                    submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+        }
+
+        function setupSmoothScrolling() {
+            // This is the manual JS smooth scroll implementation to handle the fixed header offset
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

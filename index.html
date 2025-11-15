@@ -263,7 +263,7 @@
                         <option value="Exhibitor">I'm an exhibitor</option>
                         <option value="Visitor">I'm a visitor/attendee</option>
                         <!-- UPDATED DISPLAY TEXT -->
-                        <option value="Organizer_Request_Demo">Request Demo</option>
+                        <option value="Request_Demo">Request Demo</option>
                         <option value="Other">Other / Partner</option>
                     </select>
 
@@ -334,7 +334,7 @@
 
             const updateFields = () => {
                 // Check if the selected role is the "Request Demo" option
-                const isDemoRequest = roleSelect.value === 'Organizer_Request_Demo';
+                const isDemoRequest = roleSelect.value === 'Request_Demo';
 
                 if (isDemoRequest) {
                     // 1. Show Company Name field and make it required
@@ -455,7 +455,7 @@
             if (requestDemoBtn) {
                 requestDemoBtn.addEventListener('click', () => {
                     // 1. Set the dropdown to the demo option
-                    roleSelect.value = 'Organizer_Request_Demo';
+                    roleSelect.value = 'Request_Demo';
                     
                     // 2. Manually trigger the conditional logic to show Company field and fill message
                     if (updateFieldsCallback) {

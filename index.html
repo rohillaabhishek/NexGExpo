@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexGExpo | Experience Exhibitions Beyond Boundaries</title>
-    <!-- Placeholder Favicon Links (Original content removed for self-contained file) -->
-    
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -113,6 +111,7 @@
                         class="absolute top-0 left-0 w-full h-full object-cover rounded-2xl shadow-2xl transition duration-500 hover:shadow-indigo-400/50"
                     >
                         <!-- Source path: Assumes the video file is in the same directory as index.html -->
+                        <!-- NOTE: Using a pexels download URL as a static source, though this won't work in the final deployed environment, it serves as a good example. -->
                         <source src="https://www.pexels.com/download/video/3209828/" type="video/mp4">
                         Your browser does not support HTML5 video.
                     </video>
@@ -203,9 +202,9 @@
                 <p class="mt-4 text-indigo-100 text-lg">We are collecting essential feedback from organizers, exhibitors, and visitors. Your answers will directly influence how the platform is built. It only takes 2-3 minutes.</p>
 
                 <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <a href="organizers.html"  rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Organizer Survey</a>
-                    <a href="exhibitors.html"  rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Exhibitor Survey</a>
-                    <a href="visitors.html"  rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Visitor Survey</a>
+                    <a href="organizers.html" rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Organizer Survey</a>
+                    <a href="exhibitors.html" rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Exhibitor Survey</a>
+                    <a href="visitors.html" rel="noreferrer" class="block text-center px-4 py-3 bg-white text-indigo-700 rounded-xl font-semibold hover:bg-indigo-50 transition duration-200 shadow-md">Visitor Survey</a>
                 </div>
 
                 <p class="mt-6 text-indigo-100 text-sm text-center sm:text-left">Prefer a direct conversation? <a href="#contact" class="underline font-medium hover:text-white transition duration-200">Contact us</a> for a quick call or personalized demo.</p>
@@ -219,7 +218,8 @@
                 <p class="mt-4 text-gray-600 text-lg">We’re actively seeking organizers, event technology platforms, 3D capture providers, and industry groups to pilot this platform with us. Partner pilots receive preferential rates and comprehensive co-marketing support.</p>
 
                 <div class="mt-6">
-                    <a href="#contact" class="inline-block px-6 py-3 bg-teal-600 text-white rounded-xl font-semibold shadow-lg hover:bg-teal-700 transition duration-200">
+                    <!-- MODIFIED: Added id="pilot-partner-btn" for JS targeting -->
+                    <a href="#contact" id="pilot-partner-btn" class="inline-block px-6 py-3 bg-teal-600 text-white rounded-xl font-semibold shadow-lg hover:bg-teal-700 transition duration-200">
                         Become a Pilot Partner
                     </a>
                 </div>
@@ -336,6 +336,9 @@
                 // Check if the selected role is the "Request Demo" option
                 const isDemoRequest = roleSelect.value === 'Request_Demo';
 
+                // NOTE: The 'Other' role does not require the Company Name field
+                const isPartnerRequest = roleSelect.value === 'Other'; 
+
                 if (isDemoRequest) {
                     // 1. Show Company Name field and make it required
                     companyNameGroup.classList.remove('hidden');
@@ -388,7 +391,8 @@
                         Submission failed: ${message}
                     </p>`;
             } else {
-                htmlContent = '';
+                formStatus.innerHTML = '';
+                return;
             }
             
             formStatus.innerHTML = htmlContent;
@@ -450,6 +454,8 @@
         function setupSmoothScrolling(updateFieldsCallback) {
             const roleSelect = document.getElementById('role-select');
             const requestDemoBtn = document.getElementById('request-demo-btn-hero');
+            // NEW: Get the Pilot Partner button
+            const pilotPartnerBtn = document.getElementById('pilot-partner-btn');
 
             // Set up listener for the main "Request a Demo" button click
             if (requestDemoBtn) {
@@ -461,10 +467,24 @@
                     if (updateFieldsCallback) {
                         updateFieldsCallback();
                     }
-                    
                     // The anchor's default behavior handles the scroll to #contact
                 });
             }
+            
+            // NEW: Set up listener for the "Pilot Partner" button click
+            if (pilotPartnerBtn) {
+                pilotPartnerBtn.addEventListener('click', () => {
+                    // 1. Set the dropdown to the Other/Partner option
+                    roleSelect.value = 'Other';
+
+                    // 2. Manually trigger the conditional logic to hide Company field and clear demo message
+                    if (updateFieldsCallback) {
+                        updateFieldsCallback();
+                    }
+                    // The anchor's default behavior handles the scroll to #contact
+                });
+            }
+
 
             // This is the manual JS smooth scroll implementation to handle the fixed header offset
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

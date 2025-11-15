@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexGExpo | Experience Exhibitions Beyond Boundaries</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- Placeholder Favicon Links (Original content removed for self-contained file) -->
     
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -72,7 +69,8 @@
                     <a href="#survey" class="inline-flex items-center justify-center px-8 py-3 bg-indigo-600 text-white rounded-xl font-semibold shadow-xl shadow-indigo-200 hover:bg-indigo-700 transition duration-200 transform hover:-translate-y-0.5">
                         Start Exploring
                     </a>
-                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition duration-200">
+                    <!-- ADDED ID for JS interaction -->
+                    <a href="#contact" id="request-demo-btn-hero" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition duration-200">
                         Request a Demo
                         <!-- Zap Icon (Lightning) -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 w-5 h-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -163,7 +161,7 @@
             <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-indigo-500">
                     <h4 class="font-bold text-2xl text-gray-900 mb-2">Organizers</h4>
-                    <p class="mt-2 text-gray-600">Extend your event online, enhance engagement, and reach global audiences — with complete control over branding and access.</p>
+                    <p class="mt-2 text-gray-600">Extend your event online, enhance engagement, and reach global audiences - with complete control over branding and access.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-teal-500">
                     <h4 class="font-bold text-2xl text-gray-900 mb-2">Exhibitors</h4>
@@ -255,16 +253,33 @@
                         required
                         class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
                     />
+                    <!-- UPDATED: Changed display text to just "Request Demo" -->
                     <select
+                        id="role-select"
                         name="Role"
                         class="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white appearance-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
                     >
-                        <option>I'm an organizer</option>
-                        <option>I'm an exhibitor</option>
-                        <option>I'm a visitor/attendee</option>
-                        <option>Other / Partner</option>
+                        <option value="Organizer">I'm an organizer</option>
+                        <option value="Exhibitor">I'm an exhibitor</option>
+                        <option value="Visitor">I'm a visitor/attendee</option>
+                        <!-- UPDATED DISPLAY TEXT -->
+                        <option value="Organizer_Request_Demo">Request Demo</option>
+                        <option value="Other">Other / Partner</option>
                     </select>
+
+                    <!-- NEW: Company Name Field (Conditional visibility handled by JS) -->
+                    <div id="company-name-group" class="hidden">
+                        <input
+                            type="text"
+                            placeholder="Company Name (Required for Demo)"
+                            name="Company Name"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                        />
+                    </div>
+
+                    <!-- UPDATED: Added ID for JS handling -->
                     <textarea
+                        id="message-textarea"
                         placeholder="Your message (optional)"
                         name="Message"
                         class="w-full border border-gray-300 rounded-lg px-4 py-3 h-32 resize-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
@@ -278,12 +293,6 @@
                         >
                             Send Message
                         </button>
-                        <!-- <button
-                            type="button"
-                            class="w-full sm:w-auto px-6 py-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition duration-200"
-                        >
-                            Request Demo
-                        </button> -->
                     </div>
 
                     <!-- Form Status Messages -->
@@ -311,8 +320,53 @@
             document.getElementById('current-year').textContent = new Date().getFullYear();
             
             setupFormSubmission();
-            setupSmoothScrolling();
+            const updateFields = setupConditionalFields(); // Store the updateFields function
+            setupSmoothScrolling(updateFields); // Pass updateFields to smooth scrolling handler
         });
+
+        // Function to handle conditional visibility and auto-filling
+        function setupConditionalFields() {
+            const roleSelect = document.getElementById('role-select');
+            const companyNameGroup = document.getElementById('company-name-group');
+            const companyNameInput = companyNameGroup.querySelector('input[name="Company Name"]');
+            const messageTextarea = document.getElementById('message-textarea');
+            const DEMO_MESSAGE = "Notify me when demo Launches";
+
+            const updateFields = () => {
+                // Check if the selected role is the "Request Demo" option
+                const isDemoRequest = roleSelect.value === 'Organizer_Request_Demo';
+
+                if (isDemoRequest) {
+                    // 1. Show Company Name field and make it required
+                    companyNameGroup.classList.remove('hidden');
+                    companyNameInput.required = true;
+
+                    // 2. Auto-fill message if it's currently empty or contains a default placeholder
+                    if (messageTextarea.value.trim() === '' || messageTextarea.value.trim() === 'Your message (optional)') {
+                        messageTextarea.value = DEMO_MESSAGE;
+                    }
+
+                } else {
+                    // 1. Hide Company Name field and remove required attribute
+                    companyNameGroup.classList.add('hidden');
+                    companyNameInput.required = false;
+                    companyNameInput.value = ''; // Clear value
+
+                    // 2. Clear message only if it contains the auto-filled text
+                    if (messageTextarea.value.trim() === DEMO_MESSAGE) {
+                        messageTextarea.value = '';
+                    }
+                }
+            };
+
+            // Initial call to set fields based on default selection (if needed)
+            updateFields();
+            // Listen for changes in the dropdown
+            roleSelect.addEventListener('change', updateFields);
+            
+            // Return the updateFields function so it can be called externally
+            return updateFields;
+        }
 
         // Function to display status messages (success/error)
         function showStatusMessage(status, message = '') {
@@ -347,9 +401,10 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
-                // Input validation check
+                // Manual check to ensure required fields (especially dynamic ones) are filled
                 if (!form.checkValidity()) {
                     // If form is invalid, let the browser show its error messages.
+                    form.reportValidity();
                     return; 
                 }
 
@@ -392,7 +447,25 @@
             });
         }
 
-        function setupSmoothScrolling() {
+        function setupSmoothScrolling(updateFieldsCallback) {
+            const roleSelect = document.getElementById('role-select');
+            const requestDemoBtn = document.getElementById('request-demo-btn-hero');
+
+            // Set up listener for the main "Request a Demo" button click
+            if (requestDemoBtn) {
+                requestDemoBtn.addEventListener('click', () => {
+                    // 1. Set the dropdown to the demo option
+                    roleSelect.value = 'Organizer_Request_Demo';
+                    
+                    // 2. Manually trigger the conditional logic to show Company field and fill message
+                    if (updateFieldsCallback) {
+                        updateFieldsCallback();
+                    }
+                    
+                    // The anchor's default behavior handles the scroll to #contact
+                });
+            }
+
             // This is the manual JS smooth scroll implementation to handle the fixed header offset
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -401,7 +474,9 @@
                     const targetElement = document.getElementById(targetId);
 
                     if (targetElement) {
-                        e.preventDefault();
+                        // Only prevent default if it's a valid internal hash link
+                        e.preventDefault(); 
+                        
                         const offset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - offset;
@@ -418,7 +493,3 @@
 </body>
 
 </html>
-
-
-
-

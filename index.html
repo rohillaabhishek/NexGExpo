@@ -349,6 +349,16 @@
                         messageTextarea.value = DEMO_MESSAGE;
                     }
 
+                } else if (isPartnerRequest) {
+                    // 1. Hide Company Name field and remove required attribute
+                    companyNameGroup.classList.add('hidden');
+                    companyNameInput.required = false;
+                    companyNameInput.value = ''; // Clear value
+
+                    // 2. Clear message only if it contains the auto-filled text
+                    if (messageTextarea.value.trim() === DEMO_MESSAGE) {
+                        messageTextarea.value = '';
+                    }
                 } else {
                     // 1. Hide Company Name field and remove required attribute
                     companyNameGroup.classList.add('hidden');
@@ -513,3 +523,4 @@
 </body>
 
 </html>
+
